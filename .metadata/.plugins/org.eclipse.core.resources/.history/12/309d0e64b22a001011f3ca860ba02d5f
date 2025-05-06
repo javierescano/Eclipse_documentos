@@ -1,0 +1,27 @@
+//Diapositiva 39. JSlider
+
+package graficos;
+
+import javax.swing.*;
+
+public class Ejercicio_10 {
+
+	public static void main(String[] args) {
+        JFrame frame = new JFrame("Programación Demo");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 0, 40, 10);
+        slider.setMinorTickSpacing(5);
+        slider.setMajorTickSpacing(20);
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+        slider.setLabelTable(slider.createStandardLabels(10));
+
+        JPanel contentPane = new JPanel();
+        contentPane.add(slider);
+        frame.setContentPane(contentPane);
+
+        frame.setSize(400, 150);
+        frame.setVisible(true);
+	    }
+	}
