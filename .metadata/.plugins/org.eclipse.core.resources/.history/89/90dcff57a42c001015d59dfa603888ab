@@ -1,0 +1,22 @@
+package graficos;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class eventos_1 {
+	
+		public static void main (String[] args) {
+			
+			MarcoConTeclas mimarco=new MarcoConTeclas();
+			
+			mimarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+	}
+}
+
+class MarcoConTeclas extends JFrame{
+	public MarcoConTeclas() {
+		setVisible(true);
+		setBounds(4700,300,600,450);
+	}
+}

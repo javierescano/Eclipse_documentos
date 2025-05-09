@@ -1,0 +1,45 @@
+package graficos;
+
+import javax.awt.*;
+import javax.swing.*;
+
+
+public class Eventos_2 {
+	
+		public static void main (String[] args) {
+			
+			MarcoBotones mimarco=new MarcoBotones();
+			
+			mimarco.setVisible(true);
+			
+			mimarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+	}
+}
+
+class MarcoBotones extends JFrame{
+	
+	public MarcoBotones() {
+		
+		setTitle("Eventos y botones3");
+		
+		setBounds(400,300,500,400);
+		
+		LaminaBotones milamina= new LaminaBotones();
+		
+		add(milamina);
+		
+	}
+}
+
+class LaminaBotones extends JPanel{
+	
+	JButton botonAzul=new JButton("Azul");
+	
+	public LaminaBotones(){
+		
+		add(botonAzul);
+		
+	}
+	
+}
