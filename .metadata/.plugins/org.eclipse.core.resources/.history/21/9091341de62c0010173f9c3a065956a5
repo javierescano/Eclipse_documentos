@@ -1,0 +1,68 @@
+package graficos;
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Practica_20 {
+    public static void main(String[] args) {
+        //Creación de JFrame
+    	MarcoSaludos miMarco = new MarcoSaludos();
+        miMarco.setVisible(true);
+        miMarco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+}
+
+class MarcoSaludos extends JFrame {
+    public MarcoSaludos() {
+    	
+        setTitle("Práctica: saludar en varios idiomas");
+        setBounds(400, 300, 500, 200);
+        
+        //Creación de lámina
+        LaminaSaludos miLamina = new LaminaSaludos();
+        
+        add(miLamina);
+    }
+}
+
+class LaminaSaludos extends JPanel {
+	
+    /*private JButton botonEspanol;
+    private JButton botonIngles;
+    private JButton botonFrances;
+    private JLabel etiquetaSaludo;*/
+
+    public LaminaSaludos() {
+        // Inicialización de componentes
+        JButton botonEspanol = new JButton("Español");
+        JButton botonIngles = new JButton("Inglés");
+        JButton botonFrances = new JButton("Francés");
+        JLabel etiquetaSaludo = new JLabel("Pulsa un botón para saludar");
+
+        // Añadir componentes al panel
+        add(botonEspanol);
+        add(botonIngles);
+        add(botonFrances);
+        add(etiquetaSaludo);
+
+        // Crear y asociar los listeners
+        botonEspanol.addActionListener(new CambiaSaludo("¡Hola, buenos días!"));
+        botonIngles.addActionListener(new CambiaSaludo("Hello, good morning!"));
+        botonFrances.addActionListener(new CambiaSaludo("Bonjour, bon matin!"));
+    }
+
+    // Clase interna para manejar los eventos de los botones
+    private class CambiaSaludo implements ActionListener {
+        private String mensaje;
+
+        public CambiaSaludo(String mensaje) {
+            this.mensaje = mensaje;
+        }
+
+        // Método
+        public void actionPerformed(ActionEvent e) {
+            etiquetaSaludo.setText(mensaje);
+        }
+    }
+}
