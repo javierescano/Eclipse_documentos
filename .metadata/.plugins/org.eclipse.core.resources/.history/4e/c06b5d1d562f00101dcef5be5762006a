@@ -1,0 +1,44 @@
+package graficos;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Eventos_5a extends JFrame {
+    private JLabel etiqueta;
+
+    public Eventos_5a() {
+        setTitle("Eventos de Ratón y Teclado");
+        setSize(400, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Área sensible a eventos de ratón
+        JPanel area = new JPanel();
+        area.setBackground(Color.LIGHT_GRAY);
+        etiqueta = new JLabel("Interactúa con el área");
+        area.add(etiqueta);
+
+        // Registrar MouseAdapter como clase interna con nombre
+        area.addMouseListener(new MiMouseAdapter());
+
+        add(area, BorderLayout.CENTER);
+        setVisible(true);
+    }
+
+    // Clase interna para el mouse
+    class MiMouseAdapter extends MouseAdapter {
+        @Override
+        public void mouseEntered(MouseEvent e) {
+            etiqueta.setText("¡El ratón ha entrado en el área!");
+        }
+        @Override
+        public void mouseExited(MouseEvent e) {
+            etiqueta.setText("El ratón ha salido del área.");
+        }
+    }
+
+    public static void main(String[] args) {
+        new Eventos_5a();
+    }
+}

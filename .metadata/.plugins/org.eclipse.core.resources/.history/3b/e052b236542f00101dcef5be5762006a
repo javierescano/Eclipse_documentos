@@ -1,0 +1,41 @@
+package graficos;
+
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Eventos_7 extends JFrame {
+    private JCheckBox casilla;
+    private JLabel etiqueta;
+
+    public Eventos_7() {
+        setTitle("Ejemplo con JCheckBox");
+        setSize(300, 180);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
+
+        casilla = new JCheckBox("¿Te gusta Java?");
+        casilla.setBounds(30, 20, 150, 30);
+        add(casilla);
+
+        etiqueta = new JLabel("Selecciona la casilla");
+        etiqueta.setBounds(30, 60, 200, 30);
+        add(etiqueta);
+
+        // Registrar el listener para la casilla
+        casilla.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                if (casilla.isSelected()) {
+                    etiqueta.setText("¡A ti te gusta Java!");
+                } else {
+                    etiqueta.setText("No te gusta Java...");
+                }
+            }
+        });
+
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Eventos_7();
+    }
+}

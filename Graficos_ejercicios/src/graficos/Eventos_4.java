@@ -1,3 +1,5 @@
+//Ejemplo cambiar color fondo con clase.
+
 package graficos;
 
 import java.awt.*;
