@@ -17,7 +17,7 @@
 		<item key="DIALOG_FONT_NAME" value="1|.AppleSystemUIFont|11.0|0|COCOA|1|.AppleSystemUIFont"/>
 	</section>
 	<section name="NewClassCreationWizard.dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="-798"/>
+		<item key="DIALOG_X_ORIGIN" value="9"/>
 		<item key="DIALOG_Y_ORIGIN" value="133"/>
 		<item key="DIALOG_WIDTH" value="700"/>
 		<item key="DIALOG_HEIGHT" value="666"/>

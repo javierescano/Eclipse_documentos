@@ -1,0 +1,38 @@
+package graficos;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Eventos_5 extends JFrame {
+    private JLabel etiqueta;
+
+    public EjemploBoton() {
+        setTitle("Ejemplo");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new FlowLayout());
+
+        etiqueta = new JLabel("Texto inicial");
+        JButton boton = new JButton("Cambiar fondo y texto");
+
+        // Evento del botón
+        boton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Cambiar color de fondo
+                getContentPane().setBackground(Color.CYAN);
+                // Cambiar texto de la etiqueta
+                etiqueta.setText("¡Se cambió el fondo y el texto!");
+            }
+        });
+
+        add(etiqueta);
+        add(boton);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new EjemploBoton().setVisible(true);
+        });
+    }
+}
