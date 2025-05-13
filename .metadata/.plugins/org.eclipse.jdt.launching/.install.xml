@@ -2,6 +2,14 @@
 <dirs>
     <entry loc="/Volumes/Eclipse/Eclipse.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.macosx.x86_64_21.0.6.v20250130-0529/jre" stamp="1741250565000"/>
     <entry loc="/Library/Java/JavaVirtualMachines/jdk-21.jdk/Contents/Home" stamp="1743229067737"/>
+<<<<<<< HEAD
+=======
+    <entry loc="E:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.4.v20240802-1551" stamp="1729535536302"/>
+    <entry loc="C:\Program Files\Microsoft\jdk-11.0.22.7-hotspot" stamp="1709888428763"/>
+    <entry loc="E:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.4.v20240802-1551\jre" stamp="1729535547272"/>
+>>>>>>> 220e65155796a0a1565c3ea70a429998290b300f
     <entry loc="C:\Program Files\Java\jdk-21" stamp="1743674292559"/>
+    <entry loc="C:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.4.v20240802-1551" stamp="1726772918147"/>
     <entry loc="/Volumes/Eclipse/Eclipse.app/Contents/Eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.macosx.x86_64_21.0.6.v20250130-0529" stamp="1741250565000"/>
+    <entry loc="C:\eclipse\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.4.v20240802-1551\jre" stamp="1726772922879"/>
 </dirs>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;graficos.Eventos_5.java&apos; to &apos;Eventos_5b.java&apos;&#x0D;&#x0A;- Original project: &apos;Graficos_ejercicios&apos;&#x0D;&#x0A;- Original element: &apos;graficos.Eventos_5.java&apos;&#x0D;&#x0A;- Renamed element: &apos;graficos.Eventos_5b.java&apos;" description="Rename compilation unit &apos;Eventos_5.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;graficos{Eventos_5.java" name="Eventos_5b.java" references="false" stamp="1747070516782" version="1.0"/>
+</session>
