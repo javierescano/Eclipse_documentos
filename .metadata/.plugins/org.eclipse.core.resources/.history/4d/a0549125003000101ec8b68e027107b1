@@ -1,0 +1,36 @@
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Eventos_Teclado extends JFrame {
+
+    private JLabel etiqueta;
+
+    public Eventos_Teclado() {
+        super("Eventos con Teclado");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 150);
+        setLayout(null);
+
+        etiqueta = new JLabel("Pulsa una tecla...");
+        etiqueta.setBounds(50, 40, 200, 30);
+        add(etiqueta);
+
+        // Creamos una instancia del manejador y la asignamos
+        addKeyListener(new ManejadorTeclado());
+
+        setFocusable(true);
+        setVisible(true);
+    }
+
+    // Clase interna para manejar eventos de teclado
+    private class ManejadorTeclado extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            etiqueta.setText("Tecla pulsada: " + e.getKeyChar());
+        }
+    }
+    
+    public static void main(String[] args) {
+        new Eventos_Teclado();
+    }
+}

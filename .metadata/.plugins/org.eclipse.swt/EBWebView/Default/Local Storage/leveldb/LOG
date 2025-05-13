@@ -1,3 +1,2 @@
-2025/05/13-06:23:26.599 3d8 Reusing MANIFEST C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001
-2025/05/13-06:23:26.690 3d8 Recovering log #3
-2025/05/13-06:23:26.694 3d8 Reusing old log C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/000003.log 
+2025/05/13-06:39:54.228 24a0 Creating DB C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb since it was missing.
+2025/05/13-06:39:55.188 24a0 Reusing MANIFEST C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Local Storage\leveldb/MANIFEST-000001

@@ -11,28 +11,33 @@ public class Eventos_teclado extends JFrame {
         super("Eventos con Teclado");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(300, 150);
-        setLayout(null);
+
+        // Creamos un panel para capturar los eventos
+        JPanel panel = new JPanel(null); // null layout
+        add(panel);
 
         etiqueta = new JLabel("Pulsa una tecla...");
         etiqueta.setBounds(50, 40, 200, 30);
-        add(etiqueta);
+        panel.add(etiqueta);
 
-        // Añadimos el KeyListener al frame
-        addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                // Mostramos la tecla pulsada
-                etiqueta.setText("Tecla pulsada: " + e.getKeyChar());
-            }
-        });
+        // Añadir el KeyListener al panel en lugar de al JFrame
+        panel.setFocusable(true);
+        panel.requestFocusInWindow(); // Asegura que el foco esté en el panel
+        panel.addKeyListener(new ManejadorTeclado());
 
-        // Para que el frame reciba eventos de teclado
-        setFocusable(true);
         setVisible(true);
     }
 
+    // Clase interna para manejar eventos de teclado
+    private class ManejadorTeclado extends KeyAdapter {
+        @Override
+        public void keyPressed(KeyEvent e) {
+            etiqueta.setText("Tecla pulsada: " + e.getKeyChar());
+        }
+    }
+
     public static void main(String[] args) {
-        new Eventos_teclado();
+        SwingUtilities.invokeLater(Eventos_teclado::new);
     }
 }
 
