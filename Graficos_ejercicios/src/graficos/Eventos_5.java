@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class Eventos_5 extends JFrame {
     private JLabel etiqueta;
 
-    public EjemploBoton() {
+    public Eventos_5() {
         setTitle("Ejemplo");
         setSize(300, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
