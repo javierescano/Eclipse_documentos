@@ -1,0 +1,38 @@
+package graficos;
+
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Eventos_teclado extends JFrame {
+
+    private JLabel etiqueta;
+
+    public Eventos_teclado() {
+        super("Eventos con Teclado");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(300, 150);
+        setLayout(null);
+
+        etiqueta = new JLabel("Pulsa una tecla...");
+        etiqueta.setBounds(50, 40, 200, 30);
+        add(etiqueta);
+
+        // Añadimos el KeyListener al frame
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                // Mostramos la tecla pulsada
+                etiqueta.setText("Tecla pulsada: " + e.getKeyChar());
+            }
+        });
+
+        // Para que el frame reciba eventos de teclado
+        setFocusable(true);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new EventoTecladoDemo();
+    }
+}
+

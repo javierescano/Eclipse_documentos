@@ -1,0 +1,123 @@
+package graficos;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+
+public class Practica_21 extends JFrame {
+    private JTextField campoOperando1;
+    private JTextField campoOperando2;
+    private JComboBox<String> comboOperacion;
+    private JButton botonCalcular;
+    private JButton botonGuardar;
+    private JTextArea areaHistorial;
+
+    public Practica_21() {
+        setTitle("Calculadora");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 350);
+        setLocationRelativeTo(null);
+
+        // Panel de entrada de datos
+        JPanel panelEntrada = new JPanel();
+        panelEntrada.setLayout(new GridLayout(3, 2, 5, 5));
+        panelEntrada.add(new JLabel("Operando 1:"));
+        campoOperando1 = new JTextField();
+        panelEntrada.add(campoOperando1);
+
+        panelEntrada.add(new JLabel("Operando 2:"));
+        campoOperando2 = new JTextField();
+        panelEntrada.add(campoOperando2);
+
+        panelEntrada.add(new JLabel("Operación:"));
+        comboOperacion = new JComboBox<>(new String[]{"Suma", "Resta", "Multiplicación", "División"});
+        panelEntrada.add(comboOperacion);
+
+        // Panel de botones
+        JPanel panelBotones = new JPanel();
+        botonCalcular = new JButton("Calcular");
+        botonGuardar = new JButton("Guardar");
+        panelBotones.add(botonCalcular);
+        panelBotones.add(botonGuardar);
+
+        // Área de historial
+        areaHistorial = new JTextArea(8, 30);
+        areaHistorial.setEditable(false);
+        JScrollPane scrollHistorial = new JScrollPane(areaHistorial);
+
+        // Añadir componentes al frame
+        setLayout(new BorderLayout(10, 10));
+        add(panelEntrada, BorderLayout.NORTH);
+        add(panelBotones, BorderLayout.CENTER);
+        add(scrollHistorial, BorderLayout.SOUTH);
+
+        // Acción botón Calcular
+        botonCalcular.addActionListener(e -> calcularOperacion());
+
+        // Acción botón Guardar
+        botonGuardar.addActionListener(e -> guardarHistorial());
+    }
+
+    private void calcularOperacion() {
+        String op1Text = campoOperando1.getText().trim();
+        String op2Text = campoOperando2.getText().trim();
+        double op1, op2, resultado = 0;
+        String operacion = (String) comboOperacion.getSelectedItem();
+        String simbolo = "";
+
+        try {
+            op1 = Double.parseDouble(op1Text);
+            op2 = Double.parseDouble(op2Text);
+
+            switch (operacion) {
+                case "Suma":
+                    resultado = op1 + op2;
+                    simbolo = "+";
+                    break;
+                case "Resta":
+                    resultado = op1 - op2;
+                    simbolo = "-";
+                    break;
+                case "Multiplicación":
+                    resultado = op1 * op2;
+                    simbolo = "×";
+                    break;
+                case "División":
+                    if (op2 == 0) {
+                        JOptionPane.showMessageDialog(this, "No se puede dividir por cero.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    resultado = op1 / op2;
+                    simbolo = "÷";
+                    break;
+            }
+            String linea = op1 + " " + simbolo + " " + op2 + " = " + resultado;
+            areaHistorial.append(linea + "\n");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Por favor, introduce números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void guardarHistorial() {
+        String historial = areaHistorial.getText();
+        if (historial.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay operaciones para guardar.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        try (FileWriter fw = new FileWriter("Calculadora.txt", true);
+             BufferedWriter bw = new BufferedWriter(fw)) {
+            bw.write(historial);
+            JOptionPane.showMessageDialog(this, "Historial guardado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            areaHistorial.setText("");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar el historial.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new Practica_21().setVisible(true);
+        });
+    }
+}

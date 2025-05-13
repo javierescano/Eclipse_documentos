@@ -6,96 +6,138 @@ import java.awt.event.*;
 import java.io.*;
 
 public class Practica_21 extends JFrame {
-    private JTextField campoOperando1, campoOperando2;
+    private JTextField campoOperando1;
+    private JTextField campoOperando2;
     private JComboBox<String> comboOperacion;
-    private JButton botonCalcular, botonGuardar;
+    private JButton botonCalcular;
+    private JButton botonGuardar;
     private JTextArea areaHistorial;
-    private JScrollPane scrollHistorial;
 
     public Practica_21() {
-        setTitle("Calculadora Simple");
-        setBounds(400, 200, 450, 350);
+        setTitle("Calculadora");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-
-        // Panel superior: entrada de datos y selección de operación
+        setSize(400, 350);
+        setVisible(true);
+        //Centrar en la pantalla.
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
+   // Panel de entrada de datos
         JPanel panelEntrada = new JPanel();
-        panelEntrada.setLayout(new FlowLayout());
+        panelEntrada.setLayout(new GridLayout(3, 2, 5, 5));
+        
+        	//Op1
+        panelEntrada.add(new JLabel("Operando 1:"));
+        campoOperando1 = new JTextField();
+        panelEntrada.add(campoOperando1);
 
-        campoOperando1 = new JTextField(6);
-        campoOperando2 = new JTextField(6);
+        	//Op2
+        panelEntrada.add(new JLabel("Operando 2:"));
+        campoOperando2 = new JTextField();
+        panelEntrada.add(campoOperando2);
 
-        String[] operaciones = {"+", "-", "×", "÷"};
-        comboOperacion = new JComboBox<>(operaciones);
+        	//Operación
+        panelEntrada.add(new JLabel("Operación:"));
+        comboOperacion = new JComboBox<>(new String[]{"Suma", "Resta", "Multiplicación", "División"});
+        panelEntrada.add(comboOperacion);
 
+  // Panel de botones
+        JPanel panelBotones = new JPanel();
         botonCalcular = new JButton("Calcular");
         botonGuardar = new JButton("Guardar");
+        panelBotones.add(botonCalcular);
+        panelBotones.add(botonGuardar);
 
-        panelEntrada.add(new JLabel("Operando 1:"));
-        panelEntrada.add(campoOperando1);
-        panelEntrada.add(comboOperacion);
-        panelEntrada.add(new JLabel("Operando 2:"));
-        panelEntrada.add(campoOperando2);
-        panelEntrada.add(botonCalcular);
-        panelEntrada.add(botonGuardar);
-
-        add(panelEntrada, BorderLayout.NORTH);
-
-        // Área de historial (no editable)
-        areaHistorial = new JTextArea(10, 35);
+  // Área de historial
+        areaHistorial = new JTextArea(8, 30);
         areaHistorial.setEditable(false);
-        scrollHistorial = new JScrollPane(areaHistorial);
-        add(scrollHistorial, BorderLayout.CENTER);
+        JScrollPane scrollHistorial = new JScrollPane(areaHistorial);
 
-        // Acción del botón Calcular
-        botonCalcular.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                calcularOperacion();
-            }
-        });
+  // Añadir componentes al frame
+        setLayout(new BorderLayout(10, 10));
+        add(panelEntrada, BorderLayout.NORTH);
+        add(panelBotones, BorderLayout.CENTER);
+        add(scrollHistorial, BorderLayout.SOUTH);
 
-        // Acción del botón Guardar
-        botonGuardar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                guardarHistorial();
-            }
-        });
+        // Listeners como clases internas (no clases anónimas, no lambda)
+        botonCalcular.addActionListener(new CalcularListener());
+        botonGuardar.addActionListener(new GuardarListener());
+    }
+
+    // Clase interna para el listener de Calcular
+    private class CalcularListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            calcularOperacion();
+        }
+    }
+
+    // Clase interna para el listener de Guardar
+    private class GuardarListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            guardarHistorial();
+        }
     }
 
     private void calcularOperacion() {
-        String op1Texto = campoOperando1.getText().trim();
-        String op2Texto = campoOperando2.getText().trim();
-
-        if (op1Texto.isEmpty() || op2Texto.isEmpty()) {
-            mostrarError("Debes introducir ambos operandos.");
-            return;
-        }
-
-        double op1, op2;
-        try {
-            op1 = Double.parseDouble(op1Texto);
-            op2 = Double.parseDouble(op2Texto);
-        } catch (NumberFormatException ex) {
-            mostrarError("Los operandos deben ser números válidos.");
-            return;
-        }
-
+        String op1Text = campoOperando1.getText().trim();
+        String op2Text = campoOperando2.getText().trim();
+        
+        double op1, op2, resultado = 0;
         String operacion = (String) comboOperacion.getSelectedItem();
-        double resultado = 0;
-        String lineaOperacion;
+        String simbolo = "";
 
-        switch (operacion) {
-            case "+":
-                resultado = op1 + op2;
-                break;
-            case "-":
-                resultado = op1 - op2;
-                break;
-            case "×":
-                resultado = op1 * op2;
-                break;
-            case "÷":
-                if (op2 == 0) {
-                    mostrarError("No se puede dividir por
+        try {
+            op1 = Double.parseDouble(op1Text);
+            op2 = Double.parseDouble(op2Text);
+
+            switch (operacion) {
+                case "Suma":
+                    resultado = op1 + op2;
+                    simbolo = "+";
+                    break;
+                case "Resta":
+                    resultado = op1 - op2;
+                    simbolo = "-";
+                    break;
+                case "Multiplicación":
+                    resultado = op1 * op2;
+                    simbolo = "×";
+                    break;
+                case "División":
+                    if (op2 == 0) {
+                        JOptionPane.showMessageDialog(Practica_21.this, "No se puede dividir por cero.", "Error", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    resultado = op1 / op2;
+                    simbolo = "÷";
+                    break;
+            }
+            String linea = op1 + " " + simbolo + " " + op2 + " = " + resultado;
+            areaHistorial.append(linea + "\n");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(Practica_21.this, "Por favor, introduce números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void guardarHistorial() {
+        String historial = areaHistorial.getText();
+        if (historial.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No hay operaciones para guardar.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        //Si el fichero existe, escribe al final del mismo.
+        try (FileWriter fw = new FileWriter("Calculadora.txt", true)) {
+            fw.write(historial);
+            JOptionPane.showMessageDialog(this, "Historial guardado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            areaHistorial.setText("");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al guardar el historial.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public static void main(String[] args) {
+        new Practica_21();
+    }
+}
