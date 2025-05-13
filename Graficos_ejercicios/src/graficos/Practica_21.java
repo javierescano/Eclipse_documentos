@@ -16,52 +16,47 @@ public class Practica_21 extends JFrame {
     public Practica_21() {
         setTitle("Calculadora");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 350);
-        setVisible(true);
-        //Centrar en la pantalla.
-        setLocationRelativeTo(null);
         setResizable(false);
-        
-   // Panel de entrada de datos
+
+        // Panel de entrada de datos
         JPanel panelEntrada = new JPanel();
         panelEntrada.setLayout(new GridLayout(3, 2, 5, 5));
-        
-        	//Op1
         panelEntrada.add(new JLabel("Operando 1:"));
         campoOperando1 = new JTextField();
         panelEntrada.add(campoOperando1);
-
-        	//Op2
         panelEntrada.add(new JLabel("Operando 2:"));
         campoOperando2 = new JTextField();
         panelEntrada.add(campoOperando2);
-
-        	//Operación
         panelEntrada.add(new JLabel("Operación:"));
         comboOperacion = new JComboBox<>(new String[]{"Suma", "Resta", "Multiplicación", "División"});
         panelEntrada.add(comboOperacion);
 
-  // Panel de botones
+        // Panel de botones
         JPanel panelBotones = new JPanel();
         botonCalcular = new JButton("Calcular");
         botonGuardar = new JButton("Guardar");
         panelBotones.add(botonCalcular);
         panelBotones.add(botonGuardar);
 
-  // Área de historial
+        // Área de historial
         areaHistorial = new JTextArea(8, 30);
         areaHistorial.setEditable(false);
         JScrollPane scrollHistorial = new JScrollPane(areaHistorial);
 
-  // Añadir componentes al frame
+        // Añadir componentes al frame
         setLayout(new BorderLayout(10, 10));
         add(panelEntrada, BorderLayout.NORTH);
         add(panelBotones, BorderLayout.CENTER);
         add(scrollHistorial, BorderLayout.SOUTH);
 
-        // Listeners como clases internas (no clases anónimas, no lambda)
+        // Listeners
         botonCalcular.addActionListener(new CalcularListener());
         botonGuardar.addActionListener(new GuardarListener());
+
+        pack(); // Ajusta el tamaño automáticamente
+        setLocationRelativeTo(null); // Centra la ventana
+        setResizable(false); 
+        setVisible(true); // Mostrar la ventana al final
     }
 
     // Clase interna para el listener de Calcular
@@ -83,7 +78,7 @@ public class Practica_21 extends JFrame {
     private void calcularOperacion() {
         String op1Text = campoOperando1.getText().trim();
         String op2Text = campoOperando2.getText().trim();
-        
+
         double op1, op2, resultado = 0;
         String operacion = (String) comboOperacion.getSelectedItem();
         String simbolo = "";
@@ -107,7 +102,7 @@ public class Practica_21 extends JFrame {
                     break;
                 case "División":
                     if (op2 == 0) {
-                        JOptionPane.showMessageDialog(Practica_21.this, "No se puede dividir por cero.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "No se puede dividir por cero.", "Error", JOptionPane.ERROR_MESSAGE);
                         return;
                     }
                     resultado = op1 / op2;
@@ -117,7 +112,7 @@ public class Practica_21 extends JFrame {
             String linea = op1 + " " + simbolo + " " + op2 + " = " + resultado;
             areaHistorial.append(linea + "\n");
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(Practica_21.this, "Por favor, introduce números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Por favor, introduce números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -127,7 +122,6 @@ public class Practica_21 extends JFrame {
             JOptionPane.showMessageDialog(this, "No hay operaciones para guardar.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        //Si el fichero existe, escribe al final del mismo.
         try (FileWriter fw = new FileWriter("Calculadora.txt", true)) {
             fw.write(historial);
             JOptionPane.showMessageDialog(this, "Historial guardado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);

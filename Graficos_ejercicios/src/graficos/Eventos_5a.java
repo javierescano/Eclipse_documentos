@@ -20,20 +20,20 @@ public class Eventos_5a extends JFrame implements MouseListener {
     // Obligatorio implementar todos los métodos de MouseListener
     @Override
     public void mouseClicked(MouseEvent e) {
-        System.out.println("1.");}
+        System.out.println("1.Click");}
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("2.");}
+        System.out.println("2.Pressed");}
     @Override
     public void mouseReleased(MouseEvent e) {
-        System.out.println("3.");}
+        System.out.println("3.Released");}
         // Método vacío, pero debe estar presente}
     @Override
     public void mouseEntered(MouseEvent e) {
-        System.out.println("4.");}
+        System.out.println("4.Entered");}
     @Override
     public void mouseExited(MouseEvent e) {
-        System.out.println("5.");}
+        System.out.println("5.Exited");}
     	
     public static void main(String[] args) {
         new Eventos_5a();
