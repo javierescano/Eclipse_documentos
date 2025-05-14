@@ -1,7 +1,6 @@
 //Programa sensible a eventos de raton
 //Clases anónimas.
 
-
 package graficos;
 
 import javax.swing.*;
