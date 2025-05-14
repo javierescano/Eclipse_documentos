@@ -379,3 +379,13 @@ java.nio.file.AccessDeniedException: C:\Users\javier.esccue\OneDrive - Educacyl\
 	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:207)
 	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:300)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2025-05-14 06:23:11.094 -----------------------------------------------
+eclipse.buildId=4.35.0.20250306-0811
+java.version=21.0.6
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\Graficos_ejercicios
+
+!ENTRY ch.qos.logback.classic 1 0 2025-05-14 06:23:14.687
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.

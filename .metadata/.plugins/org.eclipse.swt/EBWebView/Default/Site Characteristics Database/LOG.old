@@ -1,5 +1,1 @@
-2025/05/13-06:39:54.299 910 Log #3: 7 ops saved to Table #4 OK
-2025/05/13-06:39:54.304 910 Archiving C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000003.log: OK
-2025/05/13-06:39:54.304 910 Table #4: 7 entries OK
-2025/05/13-06:39:54.309 910 Archiving C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001: OK
-2025/05/13-06:39:54.639 910 **** Repaired leveldb C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database; recovered 1 files; 258 bytes. Some data may have been lost. ****
+2025/05/13-06:39:54.977 910 Reusing MANIFEST C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
