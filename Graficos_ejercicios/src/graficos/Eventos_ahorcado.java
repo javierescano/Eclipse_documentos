@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Juego extends JFrame {
+public class Eventos_ahorcado extends JFrame {
     // Componentes de la primera pantalla
     private JTextField inputPalabra;
     private JButton botonEmpezar;
@@ -12,6 +12,7 @@ public class Juego extends JFrame {
     private JLabel labelAdvertencia;
 
     // Componentes de la segunda pantalla
+    private JPanel panelJuego;
     private JLabel labelHuecos;
     private JTextField inputLetra;
     private JButton botonProbar;
@@ -24,14 +25,16 @@ public class Juego extends JFrame {
     private int intentosFallidos;
     private int intentosMaximos;
 
-    public Juego() {
-    	//setSize(400,400);
+    // Panel de inicio (referencia para poder ocultarlo)
+    private JPanel panelInicio;
+
+    public Eventos_ahorcado() {
         setTitle("Ahorcado");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
 
         // --------- Pantalla de introducción de palabra ---------
-        JPanel panelInicio = new JPanel();
+        panelInicio = new JPanel();
         panelInicio.setLayout(new GridLayout(4, 1, 5, 5));
         labelInstruccion = new JLabel("Introduce la palabra secreta (menos de 5 letras, solo minúsculas):");
         inputPalabra = new JTextField(10);
@@ -47,7 +50,7 @@ public class Juego extends JFrame {
         add(panelInicio, BorderLayout.CENTER);
 
         // --------- Pantalla del juego ---------
-        JPanel panelJuego = new JPanel();
+        panelJuego = new JPanel();
         panelJuego.setLayout(new GridLayout(5, 1, 5, 5));
         labelHuecos = new JLabel("", SwingConstants.CENTER);
         inputLetra = new JTextField(2);
@@ -55,9 +58,8 @@ public class Juego extends JFrame {
         labelIntentos = new JLabel("", SwingConstants.CENTER);
         labelMensaje = new JLabel("", SwingConstants.CENTER);
         labelMensaje.setFont(labelMensaje.getFont().deriveFont(Font.BOLD));
-        
         panelJuego.add(labelHuecos);
-        
+
         JPanel panelLetra = new JPanel();
         panelLetra.add(new JLabel("Letra:"));
         panelLetra.add(inputLetra);
@@ -70,10 +72,22 @@ public class Juego extends JFrame {
         panelJuego.setVisible(false);
         add(panelJuego, BorderLayout.SOUTH);
 
-        // --------- Acción botón Empezar ---------
-        botonEmpezar.addActionListener(e -> {
+        // --------- Listeners ---------
+        botonEmpezar.addActionListener(new EmpezarListener());
+        botonProbar.addActionListener(new ProbarListener());
+        inputLetra.addActionListener(new ProbarListener());
+
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    // --------- Clases internas nombradas para los listeners ---------
+    private class EmpezarListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
             palabraSecreta = inputPalabra.getText().trim();
-            if (!palabraSecreta.matches("[a-z]{1,4}")) {
+            if (!palabraSecreta.matches("[a-z]{1,5}")) {
                 labelAdvertencia.setText("Error: Solo letras minúsculas y menos de 5 caracteres.");
             } else {
                 labelAdvertencia.setText("");
@@ -82,22 +96,21 @@ public class Juego extends JFrame {
                 panelJuego.setVisible(true);
                 pack();
             }
-        });
-
-        // --------- Acción botón Probar letra ---------
-        botonProbar.addActionListener(e -> probarLetra());
-
-        // Permitir pulsar Enter en el campo de letra
-        inputLetra.addActionListener(e -> probarLetra());
-
-        pack();
-        setLocationRelativeTo(null);
-        setVisible(true);
+        }
     }
 
+    private class ProbarListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            probarLetra();
+        }
+    }
+
+    // --------- Lógica del juego ---------
     private void iniciarJuego() {
         palabraAdivinada = new char[palabraSecreta.length()];
         for (int i = 0; i < palabraAdivinada.length; i++) palabraAdivinada[i] = '_';
+       
         intentosFallidos = 0;
         intentosMaximos = palabraSecreta.length() * 3;
         actualizarPantallaJuego();
@@ -129,7 +142,7 @@ public class Juego extends JFrame {
         inputLetra.setText("");
         actualizarPantallaJuego();
 
-        // Comprobar victoria
+        // Comprobar victoria ///////////////////////////////////////////////
         if (new String(palabraAdivinada).equals(palabraSecreta)) {
             labelMensaje.setForeground(new Color(0, 128, 0));
             labelMensaje.setText("¡Felicidades! Has adivinado la palabra.");
@@ -161,6 +174,6 @@ public class Juego extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Juego();
+        new Eventos_ahorcado();
     }
 }
