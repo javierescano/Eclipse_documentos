@@ -5,14 +5,14 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 
-public class JuegoClicCirculo extends JFrame {
+public class Eventos_JuegoCirculo extends JFrame {
     private int puntos = 0;
     private int x, y, radio = 40;
     private Color colorCirculo = Color.RED;
     private final Random rand = new Random();
     private PanelJuego panel;
 
-    public JuegoClicCirculo() {
+    public Eventos_JuegoCirculo() {
         setTitle("Haz clic en el círculo");
         setSize(400, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,6 +82,6 @@ public class JuegoClicCirculo extends JFrame {
     }
 
     public static void main(String[] args) {
-        new JuegoClicCirculo();
+        new Eventos_JuegoCirculo();
     }
 }

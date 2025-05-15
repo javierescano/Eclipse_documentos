@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Contador extends JFrame {
+public class Eventos_Contador extends JFrame {
     private int contador = 0;
     private JLabel etiquetaContador;
     private int paso = 1; // Valor por defecto para el paso
 
-    public Contador() {
+    public Eventos_Contador() {
         setTitle("Contador Multieventos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridLayout(4, 1, 10, 10));
@@ -78,6 +78,6 @@ public class Contador extends JFrame {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception ignored) {}
 
-        new Contador();
+        new Eventos_Contador();
     }
 }

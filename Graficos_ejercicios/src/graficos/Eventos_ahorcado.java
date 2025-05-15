@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Juego extends JFrame {
+public class Eventos_ahorcado extends JFrame {
     // Componentes de la primera pantalla
     private JTextField inputPalabra;
     private JButton botonEmpezar;
@@ -25,7 +25,7 @@ public class Juego extends JFrame {
     private int intentosFallidos;
     private int intentosMaximos;
 
-    public Juego() {
+    public Eventos_ahorcado() {
         setTitle("Ahorcado");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
@@ -160,6 +160,6 @@ public class Juego extends JFrame {
     }
 
     public static void main(String[] args) {
-        new Juego();
+        new Eventos_ahorcado();
     }
 }
