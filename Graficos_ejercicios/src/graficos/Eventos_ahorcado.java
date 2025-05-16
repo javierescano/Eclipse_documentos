@@ -28,6 +28,7 @@ public class Eventos_ahorcado extends JFrame {
     // Panel de inicio (referencia para poder ocultarlo)
     private JPanel panelInicio;
 
+
     public Eventos_ahorcado() {
         setTitle("Ahorcado");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
