@@ -1,137 +1,118 @@
 package graficos;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
 
 public class Practica_21 extends JFrame {
-    private JTextField campoOperando1;
-    private JTextField campoOperando2;
-    private JComboBox<String> comboOperacion;
-    private JButton botonCalcular;
-    private JButton botonGuardar;
-    private JTextArea areaHistorial;
+    private JTabbedPane tabbedPane = new JTabbedPane();
 
     public Practica_21() {
-        setTitle("Calculadora");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-
-        // Panel de entrada de datos
-        JPanel panelEntrada = new JPanel();
-        panelEntrada.setLayout(new GridLayout(3, 2, 5, 5));
-        panelEntrada.add(new JLabel("Operando 1:"));
-        campoOperando1 = new JTextField();
-        panelEntrada.add(campoOperando1);
-        panelEntrada.add(new JLabel("Operando 2:"));
-        campoOperando2 = new JTextField();
-        panelEntrada.add(campoOperando2);
-        panelEntrada.add(new JLabel("Operación:"));
-        comboOperacion = new JComboBox<>(new String[]{"Suma", "Resta", "Multiplicación", "División"});
-        panelEntrada.add(comboOperacion);
-
-        // Panel de botones
-        JPanel panelBotones = new JPanel();
-        botonCalcular = new JButton("Calcular");
-        botonGuardar = new JButton("Guardar");
-        panelBotones.add(botonCalcular);
-        panelBotones.add(botonGuardar);
-
-        // Área de historial
-        areaHistorial = new JTextArea(8, 30);
-        areaHistorial.setEditable(false);
-        JScrollPane scrollHistorial = new JScrollPane(areaHistorial);
-
-        // Añadir componentes al frame
-        setLayout(new BorderLayout(10, 10));
-        add(panelEntrada, BorderLayout.NORTH);
-        add(panelBotones, BorderLayout.CENTER);
-        add(scrollHistorial, BorderLayout.SOUTH);
-
-        // Listeners
-        botonCalcular.addActionListener(new CalcularListener());
-        botonGuardar.addActionListener(new GuardarListener());
-
-        pack(); // Ajusta el tamaño automáticamente
-        setLocationRelativeTo(null); // Centra la ventana
-        setResizable(false); 
-        setVisible(true); // Mostrar la ventana al final
+        configurarGUI();
     }
 
-    // Clase interna para el listener de Calcular
-    private class CalcularListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            calcularOperacion();
+    private void configurarGUI() {
+        setTitle("Gestión Hospitalaria");
+        setSize(800, 600);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        tabbedPane.addTab("Pacientes", new PanelPacientes());
+        tabbedPane.addTab("Médicos", new PanelMedicos());
+        tabbedPane.addTab("Ingresos", new PanelIngresos());
+
+        add(tabbedPane);
+        setVisible(true);
+    }
+
+    // Panel de Pacientes
+    class PanelPacientes extends JPanel {
+        private DefaultTableModel modelo = new DefaultTableModel();
+        private JTable tabla = new JTable(modelo);
+
+        public PanelPacientes() {
+            setLayout(new BorderLayout());
+            modelo.setColumnIdentifiers(new String[]{"ID", "Nombre", "Apellidos", "Teléfono", "NSS"});
+
+            JPanel controles = new JPanel(new GridLayout(1, 4, 10, 0));
+            JButton btnAdd = new JButton("Añadir");
+            JButton btnMod = new JButton("Modificar");
+            JButton btnDel = new JButton("Eliminar");
+            JButton btnLimpiar = new JButton("Limpiar");
+
+            controles.add(btnAdd);
+            controles.add(btnMod);
+            controles.add(btnDel);
+            controles.add(btnLimpiar);
+
+            add(new JScrollPane(tabla), BorderLayout.CENTER);
+            add(controles, BorderLayout.SOUTH);
         }
     }
 
-    // Clase interna para el listener de Guardar
-    private class GuardarListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            guardarHistorial();
+    // Panel de Médicos
+    class PanelMedicos extends JPanel {
+        private DefaultTableModel modelo = new DefaultTableModel();
+        private JTable tabla = new JTable(modelo);
+
+        public PanelMedicos() {
+            setLayout(new BorderLayout());
+            modelo.setColumnIdentifiers(new String[]{"ID", "Nombre", "Apellidos", "Especialidad", "Nº Colegiado", "Cargo"});
+
+            JPanel controles = new JPanel(new GridLayout(1, 4, 10, 0));
+            JButton btnAdd = new JButton("Añadir");
+            JButton btnMod = new JButton("Modificar");
+            JButton btnDel = new JButton("Eliminar");
+            JButton btnLimpiar = new JButton("Limpiar");
+
+            controles.add(btnAdd);
+            controles.add(btnMod);
+            controles.add(btnDel);
+            controles.add(btnLimpiar);
+
+            add(new JScrollPane(tabla), BorderLayout.CENTER);
+            add(controles, BorderLayout.SOUTH);
         }
     }
 
-    private void calcularOperacion() {
-        String op1Text = campoOperando1.getText().trim();
-        String op2Text = campoOperando2.getText().trim();
+    // Panel de Ingresos
+    class PanelIngresos extends JPanel {
+        private DefaultTableModel modelo = new DefaultTableModel();
+        private JTable tabla = new JTable(modelo);
 
-        double op1, op2, resultado = 0;
-        String operacion = (String) comboOperacion.getSelectedItem();
-        String simbolo = "";
+        public PanelIngresos() {
+            setLayout(new BorderLayout());
+            modelo.setColumnIdentifiers(new String[]{"ID", "Paciente", "Médico", "Fecha", "Planta", "Cama"});
 
-        try {
-            op1 = Double.parseDouble(op1Text);
-            op2 = Double.parseDouble(op2Text);
+            JPanel panelForm = new JPanel(new GridLayout(2, 4, 10, 10));
+            panelForm.add(new JLabel("Paciente:"));
+            panelForm.add(new JComboBox<>());
+            panelForm.add(new JLabel("Médico:"));
+            panelForm.add(new JComboBox<>());
+            panelForm.add(new JLabel("Fecha:"));
+            panelForm.add(new JTextField());
+            panelForm.add(new JLabel("Planta:"));
+            panelForm.add(new JTextField());
+            panelForm.add(new JLabel("Cama:"));
+            panelForm.add(new JTextField());
 
-            switch (operacion) {
-                case "Suma":
-                    resultado = op1 + op2;
-                    simbolo = "+";
-                    break;
-                case "Resta":
-                    resultado = op1 - op2;
-                    simbolo = "-";
-                    break;
-                case "Multiplicación":
-                    resultado = op1 * op2;
-                    simbolo = "×";
-                    break;
-                case "División":
-                    if (op2 == 0) {
-                        JOptionPane.showMessageDialog(this, "No se puede dividir por cero.", "Error", JOptionPane.ERROR_MESSAGE);
-                        return;
-                    }
-                    resultado = op1 / op2;
-                    simbolo = "÷";
-                    break;
-            }
-            String linea = op1 + " " + simbolo + " " + op2 + " = " + resultado;
-            areaHistorial.append(linea + "\n");
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Por favor, introduce números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
+            JPanel controles = new JPanel(new GridLayout(1, 4, 10, 0));
+            JButton btnAdd = new JButton("Añadir");
+            JButton btnMod = new JButton("Modificar");
+            JButton btnDel = new JButton("Eliminar");
+            JButton btnLimpiar = new JButton("Limpiar");
 
-    private void guardarHistorial() {
-        String historial = areaHistorial.getText();
-        if (historial.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No hay operaciones para guardar.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
-        try (FileWriter fw = new FileWriter("Calculadora.txt", true)) {
-            fw.write(historial);
-            JOptionPane.showMessageDialog(this, "Historial guardado correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            areaHistorial.setText("");
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Error al guardar el historial.", "Error", JOptionPane.ERROR_MESSAGE);
+            controles.add(btnAdd);
+            controles.add(btnMod);
+            controles.add(btnDel);
+            controles.add(btnLimpiar);
+
+            add(panelForm, BorderLayout.NORTH);
+            add(new JScrollPane(tabla), BorderLayout.CENTER);
+            add(controles, BorderLayout.SOUTH);
         }
     }
 
     public static void main(String[] args) {
-        new Practica_21();
+        SwingUtilities.invokeLater(() -> new Practica_21());
     }
 }
