@@ -1,12 +1,7 @@
 <<<<<<< HEAD
-2025/05/15-06:24:01.229 dc4 Reusing MANIFEST C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
-2025/05/15-06:24:01.231 dc4 Recovering log #6
-2025/05/15-06:24:01.231 dc4 Reusing old log C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000006.log 
+2025/05/15-06:36:32.023 4768 Reusing MANIFEST C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
+2025/05/15-06:36:32.025 4768 Recovering log #6
+2025/05/15-06:36:32.026 4768 Reusing old log C:\Users\Javi\OneDrive - Educacyl\Documentos\Eclipse_documentos\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000006.log 
 =======
-2025/05/15-06:41:08.021 4310 Log #6: 3 ops saved to Table #7 OK
-2025/05/15-06:41:08.023 4310 Archiving C:\Users\Javi\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000006.log: OK
-2025/05/15-06:41:08.024 4310 Table #4: 7 entries OK
-2025/05/15-06:41:08.024 4310 Table #7: 3 entries OK
-2025/05/15-06:41:08.028 4310 Archiving C:\Users\Javi\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001: OK
-2025/05/15-06:41:08.034 4310 **** Repaired leveldb C:\Users\Javi\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database; recovered 2 files; 451 bytes. Some data may have been lost. ****
+2025/05/15-06:41:08.038 4310 Reusing MANIFEST C:\Users\Javi\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
 >>>>>>> 6980d36a7508df4886c86442cb4db5a3d79cbaff
