@@ -1,7 +1,3 @@
-2025/05/18-10:11:48.959 1fdc Reusing MANIFEST C:\Users\Javi\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
-2025/05/18-10:11:48.969 1fdc Recovering log #6
-2025/05/18-10:11:48.969 1fdc Level-0 table #9: started
-2025/05/18-10:11:48.974 1fdc Level-0 table #9: 228 bytes OK
-2025/05/18-10:11:48.977 1fdc Recovering log #9
-2025/05/18-10:11:48.978 1fdc Reusing old log C:\Users\Javi\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000009.log 
-2025/05/18-10:11:48.983 1fdc Delete type=0 #6
+2025/05/18-12:34:33.234 2368 Reusing MANIFEST C:\Users\Javi\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
+2025/05/18-12:34:33.236 2368 Recovering log #9
+2025/05/18-12:34:33.240 2368 Reusing old log C:\Users\Javi\eclipse-workspace\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000009.log 
