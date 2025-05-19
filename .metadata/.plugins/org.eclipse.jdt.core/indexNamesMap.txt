@@ -1,3 +1,1 @@
 INDEX VERSION 1.134
-file:/C:/Users/javier.esccue/OneDrive%20-%20Educacyl/Documentos/Eclipse_documentos/.metadata/.plugins/org.eclipse.jdt.core/1865797976.index
-meta_index
