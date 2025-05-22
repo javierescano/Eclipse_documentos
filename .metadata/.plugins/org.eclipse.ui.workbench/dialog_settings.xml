@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="ImportExportAction">
-		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.e4.ui.importer.wizard"/>
+		<item key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID" value="org.eclipse.ui.wizards.import.ZipFile"/>
 		<item key="ImportExportPage.STORE_SELECTED_EXPORT_WIZARD_ID" value="org.eclipse.ui.wizards.export.ZipFile"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
@@ -20,6 +20,18 @@
 	<section name="ZipFileImportWizard">
 		<item key="WizardZipFileResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID" value="false"/>
 		<list key="WizardZipFileResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="C:\Users\javier.esccue\Downloads\Practica18-iag.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\practica18-dmm.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\practica18-jcg.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\Practica18-dzf.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\Proyecto18-cmo.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\practica20-davs.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\Practica20-YEB.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\practica20-jcg.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\practica20-yam.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\practica19-jcg.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\practica19-mao.zip"/>
+			<item value="C:\Users\javier.esccue\Downloads\practica19-gf.zip"/>
 			<item value="C:\Users\Javi\Desktop\anterior.zip"/>
 		</list>
 		<section name="ZipFileImportWizard.dialogBounds">
