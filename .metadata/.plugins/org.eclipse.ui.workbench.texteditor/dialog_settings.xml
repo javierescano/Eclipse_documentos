@@ -3,6 +3,7 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="main"/>
 		<item value="panelinicio.setv"/>
 		<item value="ahor"/>
 		<item value="Practica_21"/>
@@ -11,4 +12,16 @@
 		<item value="eventos_5"/>
 		<item value="actionperf"/>
 	</list>
+	<section name="java.lang.Class">
+		<list key="findhistory">
+			<item value="tasa"/>
+			<item value="CurrencyConverterUI"/>
+			<item value="calculadora7"/>
+			<item value="ConversorMonedas"/>
+			<item value="BORDER"/>
+			<item value="ADD(PANEL"/>
+			<item value="calculadora"/>
+			<item value="calculador"/>
+		</list>
+	</section>
 </section>

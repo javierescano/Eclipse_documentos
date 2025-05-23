@@ -1,0 +1,134 @@
+package examen;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class calculadora4 extends JFrame {
+
+    public calculadora4() {
+        setTitle("Conversor de monedas");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 350);
+        setLocationRelativeTo(null);
+        setLayout(null);
+
+        // Título
+        JLabel title = new JLabel("Conversor de monedas");
+        title.setFont(new Font("Arial", Font.BOLD, 30));
+        title.setBounds(70, 50, 350, 40);
+        add(title);
+
+        // Panel Origen
+        JPanel panelOrigen = new JPanel();
+        panelOrigen.setLayout(new GridLayout(3, 1));
+        panelOrigen.setBounds(80, 100, 70, 100);
+        panelOrigen.setBorder(BorderFactory.createTitledBorder("Origen"));
+        JRadioButton eurOrigen = new JRadioButton("EUR");
+        JRadioButton usdOrigen = new JRadioButton("USD");
+        JRadioButton btcOrigen = new JRadioButton("BTC");
+        ButtonGroup groupOrigen = new ButtonGroup();
+        groupOrigen.add(eurOrigen);
+        groupOrigen.add(usdOrigen);
+        groupOrigen.add(btcOrigen);
+        panelOrigen.add(eurOrigen);
+        panelOrigen.add(usdOrigen);
+        panelOrigen.add(btcOrigen);
+        add(panelOrigen);
+
+        // Panel Destino
+        JPanel panelDestino = new JPanel();
+        panelDestino.setLayout(new GridLayout(3, 1));
+        panelDestino.setBounds(290, 100, 70, 100);
+        panelDestino.setBorder(BorderFactory.createTitledBorder("Destino"));
+        JRadioButton eurDestino = new JRadioButton("EUR");
+        JRadioButton usdDestino = new JRadioButton("USD");
+        JRadioButton btcDestino = new JRadioButton("BTC");
+        ButtonGroup groupDestino = new ButtonGroup();
+        groupDestino.add(eurDestino);
+        groupDestino.add(usdDestino);
+        groupDestino.add(btcDestino);
+        eurDestino.setSelected(true);
+        panelDestino.add(eurDestino);
+        panelDestino.add(usdDestino);
+        panelDestino.add(btcDestino);
+        add(panelDestino);
+
+        // Campo de texto y botón
+        JTextField inputField = new JTextField();
+        inputField.setBounds(110, 230, 120, 30);
+        add(inputField);
+
+        JLabel btcLabel = new JLabel("______");
+        btcLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        btcLabel.setBounds(240, 230, 80, 30);
+        add(btcLabel);
+
+        JButton convertButton = new JButton("Convertir");
+        convertButton.setBounds(330, 230, 90, 30);
+        add(convertButton);
+
+        // Barra de resultado simulada (amarilla)
+        JPanel resultPanel = new JPanel();
+        resultPanel.setBackground(Color.YELLOW);
+        resultPanel.setBounds(60, 270, 370, 30);
+        add(resultPanel);
+
+        // Lógica del conversor
+        convertButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String origen = eurOrigen.isSelected() ? "EUR" : usdOrigen.isSelected() ? "USD" : "BTC";
+                String destino = eurDestino.isSelected() ? "EUR" : usdDestino.isSelected() ? "USD" : "BTC";
+                String inputText = inputField.getText().trim();
+                double cantidad;
+
+                try {
+                    cantidad = Double.parseDouble(inputText);
+                } catch (NumberFormatException ex) {
+                    btcLabel.setText("Error");
+                    return;
+                }
+
+                double resultado = convertirMoneda(origen, destino, cantidad);
+                String resultadoStr = String.format("%.6f", resultado);
+
+                // Si el destino no es BTC, muestra solo 2 decimales
+                if (!destino.equals("BTC")) {
+                    resultadoStr = String.format("%.2f", resultado);
+                }
+
+                btcLabel.setText(resultadoStr + " " + destino);
+            }
+        });
+    }
+
+    /**
+     * Realiza la conversión entre monedas usando tasas fijas.
+     */
+    private double convertirMoneda(String origen, String destino, double cantidad) {
+        // Primero, convierte a EUR como moneda base
+        double enEUR = 0.0;
+
+        switch (origen) {
+            case "EUR": enEUR = cantidad; break;
+            case "USD": enEUR = cantidad * 0.93; break; // 1 USD = 0.93 EUR
+            case "BTC": enEUR = cantidad * 45000; break; // 1 BTC = 45.000 EUR
+        }
+
+        // Ahora, de EUR a destino
+        switch (destino) {
+            case "EUR": return enEUR;
+            case "USD": return enEUR * 1.08; // 1 EUR = 1.08 USD
+            case "BTC": return enEUR * 0.000022; // 1 EUR = 0.000022 BTC
+        }
+        return 0.0;
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new calculadora4().setVisible(true);
+        });
+    }
+}
